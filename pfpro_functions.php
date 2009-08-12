@@ -1,5 +1,8 @@
 <?php
 /**
+ * pfpro_functions
+ * Copyright (c) 2009 Regents of The University of Michigan.
+ *
  * This file is designed to be a drop-in replacement for the pfpro PHP
  * extension. If the pfpro extension is enabled, the functions defined in this
  * file will cause PHP to issue an error and exit. Make sure the pfpro.so
