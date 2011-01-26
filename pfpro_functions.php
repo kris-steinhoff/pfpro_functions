@@ -57,13 +57,12 @@ function pfpro_process_raw( $param_str, $address = NULL, $port = NULL, $timeout 
     // Set the address
     if ( $address === NULL ) {
         $ini_value = ini_get( 'pfpro.defaulthost' );
-        if ( $ini_value !== '' ) {
+        if ( ! empty ( $ini_value )) {
             $address = $ini_value;
         } else {
             $address = 'pilot-payflowpro.paypal.com';
         }
     }
-
     if ( ! empty( $address )) {
         curl_setopt($ch, CURLOPT_URL, 'https://'. $address);
     }
