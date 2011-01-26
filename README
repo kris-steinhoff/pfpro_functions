@@ -1,0 +1,7 @@
+The pfpro_functions.php file provides a number of functions to simplify
+interacting with PayPal's PayFlowPro service.
+
+It is designed to be a drop-in replacement for the pfpro PHP extension.
+If the pfpro extension is enabled, the functions defined in this file
+will cause PHP to issue an error and exit. Make sure the pfpro.so
+extension is not enabled.
