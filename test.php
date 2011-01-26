@@ -17,7 +17,6 @@ $params["PWD"] = NULL;
 @include 'test_config.php';
 
 require_once 'pfpro_functions.php';
-
 assert_options( ASSERT_ACTIVE, TRUE );
 assert_options( ASSERT_WARNING, TRUE );
 assert_options( ASSERT_BAIL, TRUE );
@@ -34,14 +33,14 @@ assert( 'pfpro_cleanup() === NULL' );
 // Check the output of the pfpro_version() function.
 assert( 'pfpro_version() === "HTTPS Interface"' );
 
-$resp = pfpro_process( array());
+$resp = pfpro_process( array(), 'pilot-payflowpro.paypal.com' );
 // Check for authentication failure.
 assert( '$resp["RESULT"] !== "1"' );
 // Check for an "Invalid vendor account" message when submitting an empty transaction.
 assert( '$resp["RESULT"] === "26" and $resp["RESPMSG"] === "Invalid vendor account"' );
 
 // Check for an "Invalid tender" message when submitting an incomplete transaction.
-$resp = pfpro_process( $params );
+$resp = pfpro_process( $params, 'pilot-payflowpro.paypal.com' );
 assert( '$resp["RESULT"] === "2" and $resp["RESPMSG"] === "Invalid tender"' );
 
 $params["TRXTYPE"] = "R";
@@ -55,7 +54,7 @@ $params["PAYPERIOD"] = "MONT";
 $params["START"] = date( "mdY", strtotime( "+2 months" ));
 
 // Check for an "Approved" message when submitting a complete transaction.
-$resp = pfpro_process( $params );
+$resp = pfpro_process( $params, 'pilot-payflowpro.paypal.com' );
 assert( '$resp["RESULT"] === "0" and $resp["RESPMSG"] === "Approved"' );
 
 echo "All Tests Passed\n";
