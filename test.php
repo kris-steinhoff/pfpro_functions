@@ -2,8 +2,9 @@
 
 /**
  * This script runs a series of tests of pfpro_functions. This script will
- * produce a warning and exit if an assertion fails. Modify the PARTNER, i
- * VENDOR, USER, and PWD parameters to match your environment.
+ * produce a warning and exit if an assertion fails. Modify the PARTNER,
+ * VENDOR, USER, and PWD parameters (or define them in test_config.php) to
+ * match your environment.
  *
  * @package pfpro_functions
  */
@@ -13,6 +14,7 @@ $params["VENDOR"] = NULL;
 $params["USER"] = NULL;
 $params["PWD"] = NULL;
 
+@include 'test_config.php';
 
 require_once 'pfpro_functions.php';
 
